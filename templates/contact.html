@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Cybersecurity Detection</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #0f172a;
+            --accent: #f59e0b;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --success: #10b981;
+            --danger: #ef4444;
+            --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --radius: 8px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f1f5f9;
+            color: #334155;
+            line-height: 1.6;
+        }
+
+        /* Fixed Premium Navbar Styles */
+        .navbar {
+            background-color: white;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--secondary);
+            text-decoration: none;
+            flex-shrink: 0;
+            width: 250px;
+        }
+
+        .logo i {
+            color: var(--primary);
+        }
+
+        .nav-center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex: 1;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--secondary);
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+            white-space: nowrap;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a.active {
+            color: var(--primary);
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--primary);
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            flex-shrink: 0;
+            width: 250px;
+            justify-content: flex-end;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border-radius: var(--radius);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            white-space: nowrap;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            text-decoration: none;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            color: white;
+            text-decoration: none;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+            text-decoration: none;
+        }
+
+        /* Contact Hero */
+        .contact-hero {
+            background: linear-gradient(135deg, var(--primary) 0%, #1e40af 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .contact-hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .contact-hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 80px 20px;
+            position: relative;
+        }
+
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .contact-info {
+            padding-right: 30px;
+        }
+
+        .contact-info h2 {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+
+        .contact-info p {
+            color: var(--gray);
+            margin-bottom: 40px;
+            font-size: 1.1rem;
+        }
+
+        .contact-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .method-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .method-icon i {
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .method-content h4 {
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+            color: var(--secondary);
+        }
+
+        .method-content p {
+            margin-bottom: 5px;
+            color: var(--gray);
+        }
+
+        .method-content a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .method-content a:hover {
+            text-decoration: underline;
+        }
+
+        /* Premium Contact Form */
+        .premium-contact-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            overflow: hidden;
+            position: relative;
+            height: fit-content;
+        }
+
+        .premium-contact-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, var(--primary), var(--accent), var(--success));
+            border-radius: 20px 20px 0 0;
+        }
+
+        .form-header {
+            padding: 30px 30px 0;
+            text-align: center;
+        }
+
+        .form-header h3 {
+            color: var(--secondary);
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .form-header p {
+            color: var(--gray);
+            margin-bottom: 0;
+        }
+
+        .contact-form {
+            padding: 30px;
+        }
+
+        .form-group {
+            position: relative;
+            margin-bottom: 25px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--secondary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 15px 20px 15px 50px;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s;
+            background-color: white;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+        }
+
+        .form-icon {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray);
+            transition: all 0.3s;
+            z-index: 2;
+        }
+
+        .form-group:focus-within .form-icon {
+            color: var(--primary);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: none;
+            padding-left: 20px;
+        }
+
+        .btn-premium {
+            position: relative;
+            padding: 15px 40px;
+            font-weight: 600;
+            background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+            border: none;
+            color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+
+        .btn-premium:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(37, 99, 235, 0.3);
+            color: white;
+        }
+
+        .btn-premium:active {
+            transform: translateY(-1px);
+        }
+
+        .btn-icon {
+            transition: transform 0.3s;
+        }
+
+        .btn-premium:hover .btn-icon {
+            transform: translateX(5px);
+        }
+
+        /* Result Alert */
+        #result {
+            position: fixed;
+            top: 100px;
+            right: 30px;
+            z-index: 1050;
+            min-width: 350px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            opacity: 0;
+            transform: translateX(100%);
+            transition: all 0.5s ease;
+        }
+
+        #result.show {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 80px 20px;
+            background-color: white;
+        }
+
+        .faq-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+
+        .section-header p {
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .accordion-premium .accordion-item {
+            border: none;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+
+        .accordion-premium .accordion-button {
+            background-color: white;
+            border: none;
+            padding: 20px 25px;
+            font-weight: 600;
+            color: var(--secondary);
+            border-radius: 12px !important;
+        }
+
+        .accordion-premium .accordion-button:not(.collapsed) {
+            background-color: var(--primary);
+            color: white;
+            box-shadow: none;
+        }
+
+        .accordion-premium .accordion-button:focus {
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+        }
+
+        .accordion-premium .accordion-body {
+            padding: 20px 25px;
+            color: var(--gray);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--secondary);
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            padding: 20px;
+            border-top: 1px solid #334155;
+            color: white;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .contact-info {
+                padding-right: 0;
+            }
+
+            .contact-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-center {
+                display: none;
+            }
+
+            .contact-hero {
+                padding: 60px 20px;
+            }
+
+            .contact-hero h1 {
+                font-size: 2rem;
+            }
+
+            #result {
+                left: 20px;
+                right: 20px;
+                min-width: auto;
+            }
+
+            .contact-method {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+
+            .method-icon {
+                align-self: center;
+            }
+
+            .nav-actions {
+                gap: 10px;
+            }
+
+            .btn {
+                padding: 8px 16px;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-container {
+                padding: 0 15px;
+            }
+
+            .logo span {
+                font-size: 1.2rem;
+            }
+
+            .btn {
+                padding: 6px 12px;
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Fixed Premium Navbar -->
+<nav class="navbar navbar-expand-lg sticky-top" style="
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 0.5rem 0;
+">
+    <div class="container">
+        <!-- Logo (Left) -->
+        <a class="navbar-brand fw-bold" href="/" style="
+            font-size: 1.5rem;
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: flex;
+            align-items: center;
+            padding: 0.5rem 0;
+        ">
+            <i class="fas fa-shield-alt me-2" style="
+                background: linear-gradient(135deg, #2563eb, #1d4ed8);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+                font-size: 1.8rem;
+            "></i>
+            Cybersecurity Detection
+        </a>
+
+        <!-- Hamburger for mobile -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" style="
+                border: none;
+                box-shadow: none;
+                padding: 0.5rem;
+            ">
+            <span class="navbar-toggler-icon" style="
+                background-image: url('data:image/svg+xml,<svg viewBox=\'0 0 30 30\' xmlns=\'http://www.w3.org/2000/svg\'><path stroke=\'%232563eb\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-miterlimit=\'10\' d=\'M4 7h22M4 15h22M4 23h22\'/></svg>');
+            "></span>
+        </button>
+
+        <!-- Center Nav Links -->
+        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+            <ul class="navbar-nav mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="/" style="
+                        font-weight: 600;
+                        color: #0f172a !important;
+                        padding: 0.75rem 1.25rem !important;
+                        margin: 0 0.25rem;
+                        border-radius: 8px;
+                        transition: all 0.3s ease;
+                        position: relative;
+                    " onmouseover="this.style.color='#2563eb !important'; this.style.background='rgba(37, 99, 235, 0.1)';"
+                        onmouseout="this.style.color='#0f172a !important'; this.style.background='transparent';">
+                        Home
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/url" style="
+                        font-weight: 600;
+                        color: #0f172a !important;
+                        padding: 0.75rem 1.25rem !important;
+                        margin: 0 0.25rem;
+                        border-radius: 8px;
+                        transition: all 0.3s ease;
+                        position: relative;
+                    " onmouseover="this.style.color='#2563eb !important'; this.style.background='rgba(37, 99, 235, 0.1)';"
+                        onmouseout="this.style.color='#0f172a !important'; this.style.background='transparent';">
+                        URL 
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/message" style="
+                        font-weight: 600;
+                        color: #0f172a !important;
+                        padding: 0.75rem 1.25rem !important;
+                        margin: 0 0.25rem;
+                        border-radius: 8px;
+                        transition: all 0.3s ease;
+                        position: relative;
+                    " onmouseover="this.style.color='#2563eb !important'; this.style.background='rgba(37, 99, 235, 0.1)';"
+                        onmouseout="this.style.color='#0f172a !important'; this.style.background='transparent';">
+                        Message 
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/email" style="
+                        font-weight: 600;
+                        color: #0f172a !important;
+                        padding: 0.75rem 1.25rem !important;
+                        margin: 0 0.25rem;
+                        border-radius: 8px;
+                        transition: all 0.3s ease;
+                        position: relative;
+                    " onmouseover="this.style.color='#2563eb !important'; this.style.background='rgba(37, 99, 235, 0.1)';"
+                        onmouseout="this.style.color='#0f172a !important'; this.style.background='transparent';">
+                        Email 
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/number" style="
+                        font-weight: 600;
+                        color: #0f172a !important;
+                        padding: 0.75rem 1.25rem !important;
+                        margin: 0 0.25rem;
+                        border-radius: 8px;
+                        transition: all 0.3s ease;
+                        position: relative;
+                    " onmouseover="this.style.color='#2563eb !important'; this.style.background='rgba(37, 99, 235, 0.1)';"
+                        onmouseout="this.style.color='#0f172a !important'; this.style.background='transparent';">
+                        Number 
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+  
+        <div class="d-flex">
+            {% if 'email' in session %}
+            <a href="{{ url_for('logout') }}" class="btn me-2" style="
+                background: transparent;
+                border: 2px solid #ef4444;
+                color: #ef4444;
+                padding: 0.5rem 1.5rem;
+                border-radius: 8px;
+                font-weight: 600;
+                transition: all 0.3s ease;
+                text-decoration: none;
+            " onmouseover="this.style.background='#ef4444'; this.style.color='white';"
+                onmouseout="this.style.background='transparent'; this.style.color='#ef4444';">
+                Logout
+            </a>
+            {% else %}
+            <a href="{{ url_for('login') }}" class="btn me-2" style="
+                background: transparent;
+                border: 2px solid #2563eb;
+                color: #2563eb;
+                padding: 0.5rem 1.5rem;
+                border-radius: 8px;
+                font-weight: 600;
+                transition: all 0.3s ease;
+                text-decoration: none;
+            " onmouseover="this.style.background='#2563eb'; this.style.color='white';"
+                onmouseout="this.style.background='transparent'; this.style.color='#2563eb';">
+                Sign In
+            </a>
+            {% endif %}
+            <a href="{{ url_for('register') }}" class="btn" style="
+                background: linear-gradient(135deg, #2563eb, #1d4ed8);
+                border: none;
+                color: white;
+                padding: 0.5rem 1.5rem;
+                border-radius: 8px;
+                font-weight: 600;
+                transition: all 0.3s ease;
+                text-decoration: none;
+                box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+            " onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(37, 99, 235, 0.4)';"
+                onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(37, 99, 235, 0.3)';">
+                Register
+            </a>
+        </div>
+    </div>
+</nav>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
+    <!-- Contact Hero -->
+    <section class="contact-hero">
+        <div class="contact-hero-content">
+            <h1>Get In Touch With Us</h1>
+            <p>Have questions about our cybersecurity solutions? Our team is here to help protect your digital assets.
+            </p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="contact-container">
+            <div class="contact-info">
+                <h2>Let's Start a Conversation</h2>
+                <p>We're here to answer any questions you may have about our cybersecurity detection platform. Reach out
+                    to us and we'll respond as soon as we can.</p>
+
+                <div class="contact-methods">
+                    <div class="contact-method">
+                        <div class="method-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="method-content">
+                            <h4>Email Us</h4>
+                            <p>Send us an email anytime</p>
+                            <a href="mailto:support@cybersecuritydetection.com">support@cybersecuritydetection.com</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-method">
+                        <div class="method-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="method-content">
+                            <h4>Call Us</h4>
+                            <p>Mon-Fri from 9am to 6pm</p>
+                            <a href="tel:+11234567890">+1 (123) 456-7890</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-method">
+                        <div class="method-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="method-content">
+                            <h4>Visit Us</h4>
+                            <p>Come say hello at our office</p>
+                            <p>123 Security Avenue, Cyber City, DC 10001</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="premium-contact-card">
+                <div class="form-header">
+                    <h3>Send Us a Message</h3>
+                    <p>Fill out the form below and we'll get back to you shortly</p>
+                </div>
+
+                <form method="POST" id="form" class="contact-form">
+                    <input type="hidden" name="access_key" value="48743f23-25a9-485a-aad6-4b777c69d81a">
+                    <input type="hidden" name="subject" value="New Contact Form Submission">
+
+                    <div class="form-group">
+                        <label for="name" class="form-label">
+                            <i class="fas fa-user"></i> Full Name
+                        </label>
+                        <input type="text" name="name" id="name" class="form-control" placeholder="Enter your full name"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email" class="form-label">
+                            <i class="fas fa-envelope"></i> Email Address
+                        </label>
+                        <input type="email" name="email" id="email" class="form-control"
+                            placeholder="Enter your email address" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone" class="form-label">
+                            <i class="fas fa-phone"></i> Phone Number
+                        </label>
+                        <input type="tel" name="phone" id="phone" class="form-control"
+                            placeholder="Enter your phone number" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message" class="form-label">
+                            <i class="fas fa-comment"></i> Your Message
+                        </label>
+                        <textarea name="message" id="message" class="form-control"
+                            placeholder="Tell us how we can help you..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-premium">
+                        <span class="btn-text">Send Message</span>
+                        <div class="btn-icon">
+                            <i class="fas fa-paper-plane"></i>
+                        </div>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="faq-container">
+            <div class="section-header">
+                <h2>Frequently Asked Questions</h2>
+                <p>Find quick answers to common questions about our services</p>
+            </div>
+
+            <div class="accordion accordion-premium" id="faqAccordion">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            How does your XGBoost detection system work?
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                        data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Our system uses the XGBoost machine learning algorithm to analyze patterns in data and
+                            identify potential cybersecurity threats. It processes multiple data points in real-time,
+                            learning from each interaction to improve detection accuracy over time.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            What types of threats can your system detect?
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                        data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Our platform detects a wide range of cybersecurity threats including phishing attempts,
+                            malicious URLs, suspicious email content, fraudulent phone numbers, malware, and various
+                            forms of social engineering attacks.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            How quickly will I receive a response to my inquiry?
+                        </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                        data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            We typically respond to all inquiries within 24 hours during business days. For urgent
+                            matters, please call our support line for immediate assistance.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="copyright">
+            <p>&copy; 2025 Cybersecurity Detection. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Result Alert -->
+    <div id="result" class="alert alert-dismissible fade" role="alert">
+        <span id="result-message"></span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.getElementById('form');
+            const result = document.getElementById('result');
+            const resultMessage = document.getElementById('result-message');
+
+            // Initialize Bootstrap alert
+            const bsAlert = new bootstrap.Alert(result);
+
+            form.addEventListener('submit', function (e) {
+                const formData = new FormData(form);
+                e.preventDefault();
+
+                const object = Object.fromEntries(formData);
+                const json = JSON.stringify(object);
+
+                // Show loading state
+                result.classList.add('alert-info');
+                result.classList.remove('alert-success', 'alert-danger', 'show');
+                resultMessage.innerHTML = "Sending your message...";
+                result.classList.add('show');
+
+                fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: json
+                })
+                    .then(async (response) => {
+                        let json = await response.json();
+
+                        if (response.status == 200) {
+                            // Success
+                            result.classList.remove('alert-info');
+                            result.classList.add('alert-success');
+                            resultMessage.innerHTML = json.message;
+                        } else {
+                            // Error
+                            result.classList.remove('alert-info');
+                            result.classList.add('alert-danger');
+                            resultMessage.innerHTML = json.message || "There was an error sending your message.";
+                        }
+                    })
+                    .catch(error => {
+                        console.log(error);
+                        result.classList.remove('alert-info');
+                        result.classList.add('alert-danger');
+                        resultMessage.innerHTML = "Network error! Please check your connection and try again.";
+                    })
+                    .finally(() => {
+                        // Auto-hide after 5 seconds
+                        setTimeout(() => {
+                            result.classList.remove('show');
+
+                            // Reset form after hiding
+                            setTimeout(() => {
+                                if (result.classList.contains('alert-success')) {
+                                    form.reset();
+                                }
+                            }, 500);
+                        }, 5000);
+                    });
+            });
+
+            // Close alert when X is clicked
+            result.querySelector('.btn-close').addEventListener('click', function () {
+                result.classList.remove('show');
+            });
+        });
+    </script>
+</body>
+
+</html>
