@@ -1,0 +1,9 @@
+flask
+gunicorn
+werkzeug
+requests
+numpy
+pandas
+scikit-learn
+joblib
+xgboost
